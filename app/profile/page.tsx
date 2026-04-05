@@ -9,10 +9,23 @@ import {
   EmailAuthProvider,
   reauthenticateWithCredential,
 } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { auth, db } from '@/lib/firebase';
 import { useAuth } from '@/lib/authContext';
 import Navbar from '@/components/Navbar';
 import toast from 'react-hot-toast';
+
+interface NotificationPrefs {
+  emailNotifications: boolean;
+  growthAlerts: boolean;
+  maturityReminders: boolean;
+}
+
+const DEFAULT_PREFS: NotificationPrefs = {
+  emailNotifications: true,
+  growthAlerts: true,
+  maturityReminders: true,
+};
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -22,12 +35,14 @@ export default function ProfilePage() {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [emailNotifications, setEmailNotifications] = useState(true);
-  const [growthAlerts, setGrowthAlerts] = useState(true);
-  const [maturityReminders, setMaturityReminders] = useState(true);
+  const [emailNotifications, setEmailNotifications] = useState(DEFAULT_PREFS.emailNotifications);
+  const [growthAlerts, setGrowthAlerts] = useState(DEFAULT_PREFS.growthAlerts);
+  const [maturityReminders, setMaturityReminders] = useState(DEFAULT_PREFS.maturityReminders);
+  const [loadingPrefs, setLoadingPrefs] = useState(true);
 
   const [savingProfile, setSavingProfile] = useState(false);
   const [savingPassword, setSavingPassword] = useState(false);
+  const [savingPrefs, setSavingPrefs] = useState(false);
 
   useEffect(() => {
     if (!loading && !user) {
@@ -35,8 +50,27 @@ export default function ProfilePage() {
     }
     if (user) {
       setDisplayName(user.displayName ?? '');
+      loadNotificationPrefs(user.uid);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, loading, router]);
+
+  const loadNotificationPrefs = async (uid: string) => {
+    setLoadingPrefs(true);
+    try {
+      const snap = await getDoc(doc(db, 'users', uid));
+      if (snap.exists()) {
+        const prefs: Partial<NotificationPrefs> = snap.data().notificationPrefs ?? {};
+        setEmailNotifications(prefs.emailNotifications ?? DEFAULT_PREFS.emailNotifications);
+        setGrowthAlerts(prefs.growthAlerts ?? DEFAULT_PREFS.growthAlerts);
+        setMaturityReminders(prefs.maturityReminders ?? DEFAULT_PREFS.maturityReminders);
+      }
+    } catch {
+      // If Firebase is not configured, fall back to defaults silently
+    } finally {
+      setLoadingPrefs(false);
+    }
+  };
 
   const handleSaveProfile = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -87,8 +121,27 @@ export default function ProfilePage() {
     }
   };
 
-  const handleSaveNotifications = () => {
-    toast.success('Notification preferences saved! 🔔');
+  const handleSaveNotifications = async () => {
+    if (!user) return;
+    setSavingPrefs(true);
+    try {
+      await setDoc(
+        doc(db, 'users', user.uid),
+        {
+          notificationPrefs: {
+            emailNotifications,
+            growthAlerts,
+            maturityReminders,
+          },
+        },
+        { merge: true }
+      );
+      toast.success('Notification preferences saved! 🔔');
+    } catch {
+      toast.error('Failed to save preferences. Check Firebase configuration.');
+    } finally {
+      setSavingPrefs(false);
+    }
   };
 
   if (loading) {
@@ -321,9 +374,17 @@ export default function ProfilePage() {
                 whileTap={{ scale: 0.98 }}
                 type="button"
                 onClick={handleSaveNotifications}
-                className="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-cyan-500 text-black font-semibold text-sm rounded-xl hover:opacity-90 transition-all"
+                disabled={savingPrefs || loadingPrefs}
+                className="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-cyan-500 text-black font-semibold text-sm rounded-xl hover:opacity-90 disabled:opacity-60 transition-all"
               >
-                Save Preferences
+                {savingPrefs ? (
+                  <span className="flex items-center gap-2">
+                    <span className="w-3.5 h-3.5 border-2 border-black border-t-transparent rounded-full animate-spin" />
+                    Saving...
+                  </span>
+                ) : (
+                  'Save Preferences'
+                )}
               </motion.button>
             </div>
           </motion.div>
