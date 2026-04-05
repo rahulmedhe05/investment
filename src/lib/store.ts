@@ -160,7 +160,3 @@ export function getDaysPassed(investment: Investment): number {
   const diff = Date.now() - new Date(investment.startDate).getTime()
   return Math.max(0, Math.floor(diff / 86400000))
 }
-
-export function isLocked(investment: Investment): boolean {
-  return new Date() < new Date(investment.maturityDate)
-}
