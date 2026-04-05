@@ -30,8 +30,8 @@ export interface AppConfig {
 const store: { users: Record<string, User>; config: AppConfig } = {
   users: {},
   config: {
-    starterReturn: 18,
-    proReturn: 21,
+    starterReturn: 24,
+    proReturn: 28,
     starterLockDays: 90,
     proLockDays: 180,
   },

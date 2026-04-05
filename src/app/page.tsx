@@ -97,7 +97,7 @@ export default function Home() {
             {[
               { value: '₹5Cr+', label: 'Capital Managed' },
               { value: '500+', label: 'Active Investors' },
-              { value: '21%', label: 'Fixed Annual Return' },
+              { value: '28%', label: 'Fixed Annual Return' },
               { value: '100%', label: 'Guaranteed Results' },
             ].map((s, i) => (
               <div key={i} className="glass p-4 text-center">
@@ -169,7 +169,7 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-6">
             {[
               { step: '01', icon: '📋', title: 'Sign Up', desc: 'Contact our team to create your investor account. You receive a unique Investor ID for dashboard access.' },
-              { step: '02', icon: '💰', title: 'Choose Package', desc: 'Select a 1-year investment package — Starter at ₹50K (18% return) or Pro at ₹1L (21% return).' },
+              { step: '02', icon: '💰', title: 'Choose Package', desc: 'Select a 1-year investment package — Starter at ₹50K (24% return) or Pro at ₹1L (28% return).' },
               { step: '03', icon: '🚀', title: 'Capital Deployed', desc: 'Your capital is deployed into digital marketing, client projects, SaaS services, and revenue-generating digital products.' },
               { step: '04', icon: '📈', title: 'Get Fixed Returns', desc: 'Receive your guaranteed fixed returns at maturity. Track daily growth on your personal dashboard.' },
             ].map((item, i) => (
@@ -204,24 +204,24 @@ export default function Home() {
                 name: 'Starter Package',
                 icon: '🌱',
                 amount: '₹50,000',
-                ret: '18%',
+                ret: '24%',
                 duration: '1 Year',
                 lockIn: '90 Days (3 Months)',
-                maturity: '₹59,000',
-                monthlyGrowth: '₹750/month',
-                features: ['Guaranteed fixed 18% annual return', 'Personal investment dashboard', 'Real-time growth tracking', 'Dedicated investor support', 'Early withdrawal after 90 days lock-in'],
+                maturity: '₹62,000',
+                monthlyGrowth: '₹1,000/month',
+                features: ['Guaranteed fixed 24% annual return', 'Personal investment dashboard', 'Real-time growth tracking', 'Dedicated investor support', 'Early withdrawal after 90 days lock-in'],
               },
               {
                 name: 'Pro Package',
                 icon: '👑',
                 amount: '₹1,00,000',
-                ret: '21%',
+                ret: '28%',
                 duration: '1 Year',
                 lockIn: '180 Days (6 Months)',
-                maturity: '₹1,21,000',
-                monthlyGrowth: '₹1,750/month',
+                maturity: '₹1,28,000',
+                monthlyGrowth: '₹2,333/month',
                 featured: true,
-                features: ['Guaranteed fixed 21% annual return', 'Everything in Starter', 'Priority support & updates', 'Detailed analytics dashboard', 'Early withdrawal after 180 days lock-in'],
+                features: ['Guaranteed fixed 28% annual return', 'Everything in Starter', 'Priority support & updates', 'Detailed analytics dashboard', 'Early withdrawal after 180 days lock-in'],
               },
             ].map((plan, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }}
@@ -284,7 +284,7 @@ export default function Home() {
             <h3 className="text-3xl md:text-4xl font-bold text-center mb-4">
               Growth <span className="gradient-text">Simulation</span>
             </h3>
-            <p className="text-center text-white/50 mb-12">Guaranteed growth of ₹1,00,000 over 1 year at fixed 21% p.a.</p>
+            <p className="text-center text-white/50 mb-12">Guaranteed growth of ₹1,00,000 over 1 year at fixed 28% p.a.</p>
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
             transition={{ duration: 0.6 }} className="glass p-6 glow"
@@ -364,7 +364,7 @@ export default function Home() {
           {/* Benefits Grid */}
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { icon: '✅', title: 'Guaranteed Fixed Returns', desc: 'Get assured 18-21% annual returns. Your returns are fixed from day one — no surprises, no fluctuations, no market dependency.' },
+              { icon: '✅', title: 'Guaranteed Fixed Returns', desc: 'Get assured 24-28% annual returns. Your returns are fixed from day one — no surprises, no fluctuations, no market dependency.' },
               { icon: '🚫', title: 'Zero Market Risk', desc: 'Your investment is NOT in stocks, crypto, or gold. It is backed by digital services and products that generate consistent, predictable revenue.' },
               { icon: '💰', title: 'Revenue-Backed Investment', desc: 'Capital is deployed into web development, digital marketing, SaaS products, and IT services — real businesses with real paying clients.' },
               { icon: '📊', title: 'Real-Time Dashboard', desc: 'Track your fixed returns growing daily on your personalized dashboard. See your exact maturity value and timeline — no guesswork.' },
@@ -397,7 +397,7 @@ export default function Home() {
           </motion.div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { icon: '🎯', title: 'Fixed Returns from Day 1', desc: 'Your return rate is locked the moment you invest. 18% for Starter, 21% for Pro — guaranteed, no ifs or buts.' },
+              { icon: '🎯', title: 'Fixed Returns from Day 1', desc: 'Your return rate is locked the moment you invest. 24% for Starter, 28% for Pro — guaranteed, no ifs or buts.' },
               { icon: '📱', title: 'Access Anywhere', desc: 'Your dashboard works on any device — desktop, tablet, or mobile. Track your guaranteed returns from anywhere, anytime.' },
               { icon: '🛡️', title: 'Dedicated Support', desc: 'Every investor gets personal support. Our team is always available to help you with your portfolio and answer any questions.' },
               { icon: '💎', title: 'No Hidden Charges', desc: 'What you see is what you get. No management fees, no platform charges, no hidden deductions from your returns.' },
@@ -431,7 +431,7 @@ export default function Home() {
           </motion.div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { name: 'Rahul S.', role: 'Pro Investor', text: 'Wealthora has been a game-changer. The dashboard is incredibly transparent and I can see my investment growing every single day. The 21% returns are real.' },
+              { name: 'Rahul S.', role: 'Pro Investor', text: 'Wealthora has been a game-changer. The dashboard is incredibly transparent and I can see my investment growing every single day. The 28% returns are real.' },
               { name: 'Priya M.', role: 'Starter Investor', text: 'I started with the Starter package to test the waters. Within 3 months, I received exactly what was projected. Now I have moved to the Pro package.' },
               { name: 'Amit K.', role: 'Pro Investor', text: 'What I love most is the transparency. I can log in anytime and see real-time growth. The team is responsive and always available for any questions.' },
             ].map((t, i) => (
@@ -470,8 +470,8 @@ export default function Home() {
               { q: 'What is Wealthora?', a: 'Wealthora is a performance-based digital investment platform. We deploy your capital into real revenue-generating digital services — including client projects, marketing operations, and SaaS systems — and share the returns with you.' },
               { q: 'How are the returns generated?', a: 'Returns are generated from real digital business operations — web development, digital marketing, SaaS products, and IT services. These are real businesses with real paying clients, which is why we can guarantee fixed returns.' },
               { q: 'Is this like stock market or crypto?', a: 'Absolutely not. Wealthora has zero connection to stocks, crypto, or gold. Your investment is backed entirely by digital services and products that generate consistent, predictable revenue. That is why your returns are fixed and guaranteed.' },
-              { q: 'Are the returns really guaranteed?', a: 'Yes. Since our revenue comes from real digital services and products with paying clients, we guarantee fixed returns — 18% for Starter and 21% for Pro. Your return rate is locked from the day you invest.' },
-              { q: 'What is the minimum investment?', a: 'The minimum investment is ₹50,000 with our Starter Package (18% fixed annual return). For higher returns, our Pro Package starts at ₹1,00,000 (21% fixed annual return). Both packages are for a 1-year investment period.' },
+              { q: 'Are the returns really guaranteed?', a: 'Yes. Since our revenue comes from real digital services and products with paying clients, we guarantee fixed returns — 24% for Starter and 28% for Pro. Your return rate is locked from the day you invest.' },
+              { q: 'What is the minimum investment?', a: 'The minimum investment is ₹50,000 with our Starter Package (24% fixed annual return). For higher returns, our Pro Package starts at ₹1,00,000 (28% fixed annual return). Both packages are for a 1-year investment period.' },
               { q: 'How do I track my investment?', a: 'Every investor gets a unique Investor ID and a personal dashboard where you can track real-time growth, fixed returns, maturity dates, and detailed analytics of your portfolio.' },
               { q: 'When can I withdraw my returns?', a: 'Both packages are for 1 year. However, if you need to withdraw early, you can do so after the minimum lock-in period — 90 days for Starter and 180 days for Pro. At the end of 1 year, you receive your full capital plus guaranteed returns.' },
               { q: 'How do I get started?', a: 'Contact our team via the details below. We will set up your investor account, explain the packages in detail, and help you choose the best plan for your goals.' },
@@ -528,7 +528,7 @@ export default function Home() {
             <div className="text-3xl mb-3">🛡️</div>
             <h4 className="text-lg font-bold mb-3">Your Investment, Our Commitment</h4>
             <p className="text-white/40 text-xs leading-relaxed">
-              Wealthora provides guaranteed fixed returns backed by revenue from real digital services and products. Your capital is not invested in stocks, cryptocurrency, gold, or any volatile market instruments. Returns are generated through our digital service operations including web development, digital marketing, SaaS products, and IT services. The return rates mentioned (18% and 21% per annum) are fixed and guaranteed for the respective lock-in periods. Please invest responsibly and within your financial capacity.
+              Wealthora provides guaranteed fixed returns backed by revenue from real digital services and products. Your capital is not invested in stocks, cryptocurrency, gold, or any volatile market instruments. Returns are generated through our digital service operations including web development, digital marketing, SaaS products, and IT services. The return rates mentioned (24% and 28% per annum) are fixed and guaranteed for the respective lock-in periods. Please invest responsibly and within your financial capacity.
             </p>
           </motion.div>
         </div>
@@ -564,8 +564,8 @@ export default function Home() {
             <div>
               <h5 className="font-semibold mb-4 text-sm text-white/70">Packages</h5>
               <div className="space-y-2">
-                <div className="text-sm text-white/40">Starter — ₹50,000 at 18% p.a.</div>
-                <div className="text-sm text-white/40">Pro — ₹1,00,000 at 21% p.a.</div>
+                <div className="text-sm text-white/40">Starter — ₹50,000 at 24% p.a.</div>
+                <div className="text-sm text-white/40">Pro — ₹1,00,000 at 28% p.a.</div>
               </div>
               <h5 className="font-semibold mb-3 mt-6 text-sm text-white/70">Investor Access</h5>
               <div className="space-y-2">
